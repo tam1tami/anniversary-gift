@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+    <title>I love you</title>
+</head>
+<body>
+<div class="full-bg">
+</div>
+
+<h1>I love you</h1>
+
+<div class="srdce">
+    <img src="fotky/srdce.png" alt="">
+</div>
+<div class="book" id="book">
+  <div class="page active"><h2>Happy 4 year anniversary baby!!</h2></div>
+<div class="page"><img src="fotky/p47.jpg"></div>
+<div class="page"><img src="fotky/p46.jpg"></div>
+<div class="page"><img src="fotky/p45.jpg"></div>
+<div class="page"><img src="fotky/p44.jpg"></div>
+<div class="page"><img src="fotky/p43.jpg"></div>
+<div class="page"><img src="fotky/p42.jpg"></div>
+<div class="page"><img src="fotky/p41.jpg"></div>
+<div class="page"><img src="fotky/p40.jpg"></div>
+<div class="page"><img src="fotky/p39.jpg"></div>
+<div class="page"><img src="fotky/p38.jpg"></div>
+<div class="page"><img src="fotky/p37.jpg"></div>
+<div class="page"><img src="fotky/p36.jpg"></div>
+<div class="page"><img src="fotky/p35.jpg"></div>
+<div class="page"><img src="fotky/p34.jpg"></div>
+<div class="page"><img src="fotky/p33.jpg"></div>
+<div class="page"><img src="fotky/p32.jpg"></div>
+<div class="page"><img src="fotky/p31.jpg"></div>
+<div class="page"><img src="fotky/p30.jpg"></div>
+<div class="page"><img src="fotky/p29.jpg"></div>
+<div class="page"><img src="fotky/p28.jpg"></div>
+<div class="page"><img src="fotky/p27.jpg"></div>
+<div class="page"><img src="fotky/p26.jpg"></div>
+<div class="page"><img src="fotky/p25.jpg"></div>
+<div class="page"><img src="fotky/p24.jpg"></div>
+<div class="page"><img src="fotky/p23.jpg"></div>
+<div class="page"><img src="fotky/p22.jpg"></div>
+<div class="page"><img src="fotky/p21.jpeg"></div>
+<div class="page"><img src="fotky/p20.jpeg"></div>
+<div class="page"><img src="fotky/p19.jpeg"></div>
+<div class="page"><img src="fotky/p18.jpeg"></div>
+<div class="page"><img src="fotky/p17.jpg"></div>
+<div class="page"><img src="fotky/p16.jpeg"></div>
+<div class="page"><img src="fotky/p15.jpeg"></div>
+<div class="page"><img src="fotky/p14.jpeg"></div>
+<div class="page"><img src="fotky/p13.jpeg"></div>
+<div class="page"><img src="fotky/p12.jpeg"></div>
+<div class="page"><img src="fotky/p11.jpeg"></div>
+<div class="page"><img src="fotky/p10.jpeg"></div>
+<div class="page"><img src="fotky/p9.jpeg"></div>
+<div class="page"><img src="fotky/p8.jpeg"></div>
+<div class="page"><img src="fotky/p7.jpg"></div>
+<div class="page"><img src="fotky/p6.jpg"></div>
+<div class="page"><img src="fotky/p5.jpg"></div>
+<div class="page"><img src="fotky/p4.jpg"></div>
+<div class="page"><img src="fotky/p3.jpg"></div>
+<div class="page"><img src="fotky/p2.jpg"></div>
+<div class="page"><img src="fotky/p1.jpg"></div>
+  <div class="page"><h3>29.11.2021 -> navždy💞</h3></div>
+</div>
+
+ <div id="hearts-container"></div>
+
+<div class="macka"><img src="fotky/macka.png" alt=""></div>
+
+<div class="controls">
+  <button onclick="prevPage()">⬅ Späť</button>
+  <button onclick="nextPage()">Ďalej ➡</button>
+</div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+let index = 0;
+
+// Swipe na mobile
+let startX = 0;
+
+document.getElementById("book").addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.getElementById("book").addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) nextPage();
+  if (endX - startX > 50) prevPage();
+});
+
+function showPage(i) {
+  pages.forEach(p => p.classList.remove("active", "prev"));
+  if (pages[i - 1]) pages[i - 1].classList.add("prev");
+  pages[i].classList.add("active");
+}
+
+function nextPage() {
+  if (index < pages.length - 1) {
+    index++;
+    showPage(index);
+  }
+}
+
+function prevPage() {
+  if (index > 0) {
+    index--;
+    showPage(index);
+  }
+}
+
+
+const heartsContainer = document.getElementById("hearts-container");
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw"; // náhodná pozícia
+  heart.style.animationDuration = 6 + Math.random() * 4 + "s"; // rýchlosť
+  heart.style.width = 15 + Math.random() * 15 + "px";
+  heart.style.height = heart.style.width;
+  heartsContainer.appendChild(heart);
+
+  // odstrániť po skončení animácie
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}
+
+// každých 300ms nové srdiečko
+setInterval(createHeart, 500);
+
+</script>
+
+</body>
+</html>
